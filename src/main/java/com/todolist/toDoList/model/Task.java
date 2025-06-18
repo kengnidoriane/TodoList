@@ -1,10 +1,5 @@
 package com.todolist.toDoList.model;
 
-//import jakarta.persistence.*;
-//import lombok.*;
-//import org.hibernate.annotations.CreationTimestamp;
-//import org.hibernate.annotations.UpdateTimestamp;
-//import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,4 +34,3 @@ public class Task {
     private LocalDateTime updatedAt;
 }
 
-enum TaskStatus { TODO, IN_PROGRESS, DONE }

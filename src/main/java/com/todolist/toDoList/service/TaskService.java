@@ -6,6 +6,8 @@ import com.todolist.toDoList.model.TaskStatus;
 import com.todolist.toDoList.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,10 +28,11 @@ public class TaskService {
     }
 
     public Task updateTask(Long id, Task task) {
-        Task existingTask = taskRepository.findById(id).orElseThrow();
+        Task existingTask = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
         existingTask.setTitle(task.getTitle());
         existingTask.setDescription(task.getDescription());
         existingTask.setStatus(task.getStatus());
+        existingTask.setUpdatedAt(LocalDateTime.now());
         return taskRepository.save(existingTask);
     }
 
